@@ -4,7 +4,10 @@ const requireAuth = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
-// 🔒 All routes protected by authMiddleware
+router.get("/", (req, res) => {
+  res.status(400).json({ error: "Room ID required" });
+});
+
 router.post("/send", requireAuth, sendMessage); // Send a message
 router.get("/:roomId", requireAuth, getMessages); // Get chat between two users
 
