@@ -37,18 +37,18 @@ handleSocketConnection(io);
 // ✅ Serve Frontend (React Build)
 // Make sure this is placed **after** all API routes
 //
-const frontendPath = path.resolve(__dirname, "../chat-frontend/dist");
+const frontendPath = path.resolve(__dirname, "chat-frontend/dist");
 
-// Check if folder and index.html exist
-if (fs.existsSync(frontendPath) && fs.existsSync(path.join(frontendPath, "index.html"))) {
-  app.use(express.static(frontendPath));
+  // Check if folder and index.html exist
+  if (fs.existsSync(frontendPath) && fs.existsSync(path.join(frontendPath, "index.html"))) {
+    app.use(express.static(frontendPath));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
-  });
-} else {
-  console.warn("Frontend build not found. Skipping static serve.");
-}
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(frontendPath, "index.html"));
+    });
+  } else {
+    console.warn("Frontend build not found. Skipping static serve.");
+  }
 
 // Start Server
 const PORT = process.env.PORT || 3001;
