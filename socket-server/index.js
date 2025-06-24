@@ -16,7 +16,7 @@ const server = http.createServer(app);
 const fs=require("fs")
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // for development
+    origin: "http://ec2-15-206-164-179.ap-south-1.compute.amazonaws.com:5000", 
     credentials: true,
   },
 });
@@ -24,7 +24,7 @@ const io = new Server(server, {
 // Connect to MongoDB
 connectDB();
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "*", credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 
